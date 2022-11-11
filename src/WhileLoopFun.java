@@ -17,41 +17,31 @@ public class WhileLoopFun {
         }
     }
 
-    /** Returns the number of times letter occurs in word.
-     Example:  If word is "apple" and letter is "p",  this methods returns 2
-     Example:  If word is "excellente" and letter is "e",  this methods returns 4
 
-     PRECONDITION: letter has length 1
-     Note!  This could arguably be done easier with a for loop, so if you already know how to use for loops,
-     try it this time using a while loop!
-     */
     public int countLetter(String word, String letter) {
-
+        int count = 0;
+        int idx = 0;
+        while (idx < word.length()) {
+            String nextLetter = word.substring(idx, idx+1);
+            if (nextLetter.equals(letter)) {
+                count++;
+            }
+            idx++;
+        }
+        return count;
     }
 
-    /**Returns the maximum number of times that number can be doubled before it exceeds threshold
-     Example:  If number is 4 and threshold is 20, return 2, since 4 can be doubled a maximum of two
-     times, 4 → 8 → 16, without exceeding the threshold value of 20.
 
-     Example:  If number is 2 and threshold is 65, return 5, since 2 can be doubled a maximum of five
-     times, 2 → 4 → 8 → 16 → 32 → 64, without exceeding the threshold value of 65.
-
-     Example:  If number is 2 and threshold is 64, return 5, since 2 can be doubled a maximum of five
-     times, 2 → 4 → 8 → 16 → 32 → 64, without exceeding the threshold value of 64.
-
-     Example:  If number is 2 and threshold is 63, return 4, since 2 can be doubled a maximum of four
-     times, 2 → 4 → 8 → 16 → 32, without exceeding the threshold value of 63.
-
-     Example:  If number is 5 and threshold is 500, return 6, since 5 can be doubled a maximum of six
-     times, 5 → 10 → 20 → 40 → 80 → 160 → 320, without exceeding the threshold value of 500.
-
-     Example:  If number is 8 and threshold is 10, return 0, since 8 cannot be doubled without
-     exceeding threshold.
-
-     Precondition: number > 0, threshold > 0
-     */
-    //public int maxDoubles(int number, int threshold) {
-    //}
+    public int maxDoubles(int number, int threshold) {
+        int count = 0;
+        while (threshold > number) {
+            if (number * 2 <= threshold) {
+                count++;
+            }
+            number = number * 2;
+        }
+        return count;
+    }
 
     /**Returns true if number is prime (i.e. it has exactly two divisors: 1 and itself) and false
      if it is not prime (i.e. it has at least one other divisor); however, if number is 1, return false, as 1 is
@@ -62,10 +52,25 @@ public class WhileLoopFun {
      Example:  If number is 30, return false (in addition to 1 and 30, it can be divided by 2, 3, 5, 6, 10, 15)
      Example:  If number is 1, return false (it has only a single divisor: 1*)
 
-     * 1 is considered non-prime because prime numbers have exactly two divisors - the number and itself -
-     but 1 has only a single divisor! (don’t believe it? Google it!)
      */
-    //public boolean isPrime(int number) {
-    //}
+    public boolean isPrime(int number) {
+        int divisor = 1;
+        int countFactors = 0;
+        if (number == 1) {
+            return false;
+        }
+        while (countFactors <= 2) {
+            if (number % divisor == 0) {
+                countFactors++;
+            }
+            divisor++;
+        }
+        if (countFactors > 2) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
 }
 

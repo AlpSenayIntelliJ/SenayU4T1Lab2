@@ -1,23 +1,18 @@
 public class WhileLoopFun {
 
-    /**This class has no instance variables, so we can either include no constructor,
-     or this simple no-parameter constructor, which is actually preferred practice
-     over omitting the constructor entirely
-     */
+
     public WhileLoopFun() { }
 
-    /**Prints the individual digits in number separately, starting with the rightmost digit first, on separate lines.
-     Example:  If number is 361, this methods prints 1, then 6, then 3 (on separate lines)
-     Example:  If number is 150856, this methods prints 6, then 5, then 8, then 0, then 5, then 1 (on separate
-     lines)
-     */
+
     public void printDigits(int number) {
         int count = 0;
-        if (number > count) {
-            while (number % 10 != 0) {
-                System.out.println(number%10);
+        int length = (int)(Math.log10(number)+1);
+        if (number > 0) {
+            while (count < length) {
+                int lastDigit = number % 10;
+                number = number/10;
+                System.out.println(lastDigit);
                 count++;
-                number = number%10;
             }
         }
     }
@@ -30,8 +25,9 @@ public class WhileLoopFun {
      Note!  This could arguably be done easier with a for loop, so if you already know how to use for loops,
      try it this time using a while loop!
      */
-    //public int countLetter(String word, String letter) {
-    //}
+    public int countLetter(String word, String letter) {
+
+    }
 
     /**Returns the maximum number of times that number can be doubled before it exceeds threshold
      Example:  If number is 4 and threshold is 20, return 2, since 4 can be doubled a maximum of two
